@@ -8,9 +8,10 @@ new_page='https://www.havaianas-store.com/fr/fr/nouvelle-collection?=&start=0&sz
 TARGETS=[woman_page,men_page,flash_page,new_page]
 
 shop = get_data('shop')
+print(f'Loaded {len(shop)} items from shop.json')
 
 def main(shop):
-    page = TARGETS[2]
+    page = TARGETS[1]
     target=get_html(page)
     soup = BeautifulSoup(target, 'lxml')
     links = soup('div', 'pdp-link')
@@ -23,3 +24,4 @@ def main(shop):
 if __name__ == '__main__':
     shop=main(shop)
     dump_data('shop',shop)
+    print(f'A new total of {len(shop)} items in shop.json')
